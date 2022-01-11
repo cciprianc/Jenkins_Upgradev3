@@ -3,27 +3,31 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
-                sh 'mvn -f java-tomcat-sample/pom.xml clean package'
+                // instruct java to build
+                sh 'mvn -f java-tomcat-sample/pom.xml clean package -Duser.home="/home/cchirnoa/Documents/jenkins"'
             }
             post {
                 success {
+                    // archive artifacts
                     echo "Now Archiving the Artifacts...."
                     archiveArtifacts artifacts: '**/*.war'
                 }
             }
         }
         stage('Deploy in Staging Environment'){
-            steps{
+            steps {
+                // call build job to deploy to QA
                 build job: 'Deploy_Application_Staging_Env'
 
             }
-            
         }
-        stage('Deploy to Production'){
-            steps{
+        stage('Deploy to Production') {
+            steps {
+                // wait 5 days for aproval to move to production
                 timeout(time:5, unit:'DAYS'){
                     input message:'Approve PRODUCTION Deployment?'
                 }
+                // call build job to deploy to QA
                 build job: 'Deploy_Application_Prod_Env'
             }
         }

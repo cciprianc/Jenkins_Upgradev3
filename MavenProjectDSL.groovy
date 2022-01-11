@@ -9,7 +9,7 @@ job('First-Maven-Project-Via-DSL') {
     }
     publishers {
         publishBuild {
-            discardOldBuild((short)5, (short)5, (short)5, (short)5)
+            discardOldBuild((int)5, (int)5, (int)5, (int)5)
         }
     }
     steps {

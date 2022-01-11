@@ -10,7 +10,7 @@ job('First-Maven-Project-Via-DSL') {
         maven {
             goals('clean')
             goals('package')
-            properties('user.home=/home/cchirnoa/Documents/jenkins')
+            properties('user.home': '/home/cchirnoa/Documents/jenkins')
             mavenInstallation('LocalMaven')
             // providedSettings('/home/cchirnoa/Documents/apache-maven-3.6.3/conf/settings.xml')
         }

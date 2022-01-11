@@ -5,6 +5,12 @@ job('First-Maven-Project-Via-DSL') {
     }
     triggers {
         scm('* * * * *')
+        cron('* * * * *')
+    }
+    publishers {
+        publishBuild {
+            discardOldBuild(5, 5)
+        }
     }
     steps {
         maven {

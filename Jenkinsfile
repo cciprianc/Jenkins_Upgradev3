@@ -1,5 +1,8 @@
 pipeline {
       agent any
+      options {
+            buildDiscarder(logRotator(daysToKeepStr: '3', numToKeepStr: '5', artifactNumToKeepStr: '5'))
+      }
       stages {
             stage('Init') {
                   steps {
@@ -9,6 +12,7 @@ pipeline {
             }
             stage('Build') {
                   steps {
+//                      properties([buildDiscarder(logRotator(daysToKeepStr: '3', numToKeepStr: '3')),])
                         echo 'Building Sample Maven Project'
                   }
             }

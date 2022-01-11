@@ -12,7 +12,7 @@ job('First-Maven-Project-Via-DSL') {
             goals('package')
             properties('user.home=/home/cchirnoa/Documents/jenkins')
             mavenInstallation('LocalMaven')
-            providedSettings('/home/cchirnoa/Documents/apache-maven-3.6.3/conf/settings.xml')
+            // providedSettings('/home/cchirnoa/Documents/apache-maven-3.6.3/conf/settings.xml')
         }
         // maven('clean package', 'maven-samples/single-module/pom.xml')
     }

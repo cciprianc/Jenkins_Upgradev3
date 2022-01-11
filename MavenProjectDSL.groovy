@@ -12,8 +12,11 @@ job('First-Maven-Project-Via-DSL') {
 //            discardOldBuild(daysToKeep = '5', numToKeep = '5', artifactDaysToKeep = '5', artifactNumToKeep = '5')
 //        }
 //    }
-    options {
-        buildDiscarder(logRotator(daysToKeepStr = '5', numToKeepStr = '5', artifactDaysToKeepStr = '5', artifactNumToKeepStr = '5') )
+    logRotator { 
+        daysToKeep(5)
+        numToKeep(5)
+        artifactDaysToKeep(5)
+        artifactNumToKeep(5)
     }
     steps {
         maven {

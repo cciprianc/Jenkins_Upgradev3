@@ -7,11 +7,6 @@ job('First-Maven-Project-Via-DSL') {
         scm('* * * * *')
         cron('* * * * *')
     }
-//    publishers {
-//        publishBuild {
-//            discardOldBuild(daysToKeep = '5', numToKeep = '5', artifactDaysToKeep = '5', artifactNumToKeep = '5')
-//        }
-//    }
     logRotator { 
         daysToKeep(5)
         numToKeep(5)
